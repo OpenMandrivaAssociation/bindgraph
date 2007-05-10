@@ -1,28 +1,28 @@
 Summary:	BindGraph gathers bind9 statistics
 Name:		bindgraph
 Version:	0.2
-Release:	%mkrel 4
+Release:	%mkrel 5
 License:	GPL
 Group:		Networking/WWW
 URL:		http://www.linux.it/~md/software/
 Source0:	http://www.linux.it/~md/software/bindgraph-0.2.tar.bz2
-Source1:	bindgraph.init.bz2
-Source2:	bindgraph.sysconfig.bz2
-Source3:	bindgraph.logrotate.bz2
+Source1:	bindgraph.init
+Source2:	bindgraph.sysconfig
+Source3:	bindgraph.logrotate
 Patch0:		bindgraph-0.2-mdk_config.diff
 Patch1:		bindgraph-0.2-silly_typo.diff
 Requires(post): rpm-helper
 Requires(preun): rpm-helper
+Requires:	bind
 Requires:	rrdtool
 #Requires:	perl-File-Tail
 BuildArch:	noarch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-root
 
 %description
-DNS statistics RRDtool frontend for BIND9 BindGraph is a very
-simple DNS statistics RRDtool frontend for BIND9 that produces
-daily, weekly, monthly and yearly graphs of the DNS server's
-activity (queries, errors, etc.).
+DNS statistics RRDtool frontend for BIND9 BindGraph is a very simple DNS
+statistics RRDtool frontend for BIND9 that produces daily, weekly, monthly and
+yearly graphs of the DNS server's activity (queries, errors, etc.).
 
 %prep
 
@@ -30,9 +30,9 @@ activity (queries, errors, etc.).
 %patch0 -p1
 %patch1 -p0
 
-bzcat %{SOURCE1} > bindgraph.init
-bzcat %{SOURCE2} > bindgraph.sysconfig
-bzcat %{SOURCE3} > bindgraph.logrotate
+cp %{SOURCE1} bindgraph.init
+cp %{SOURCE2} bindgraph.sysconfig
+cp %{SOURCE3} bindgraph.logrotate
 
 %build
 
@@ -79,5 +79,3 @@ install -m0644 bindgraph.logrotate %{buildroot}%{_sysconfdir}/logrotate.d/bindgr
 %dir %attr(0755,root,root) /var/log/bindgraph
 %dir %attr(0755,root,root) /var/cache/bindgraph
 %dir %attr(0755,root,root) %{_localstatedir}/bindgraph
-
-
