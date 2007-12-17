@@ -20,7 +20,6 @@ Requires:	bind
 Requires:	rrdtool
 #Requires:	perl-File-Tail
 BuildArch:	noarch
-BuildRoot:	%{_tmppath}/%{name}-%{version}-root
 
 %description
 DNS statistics RRDtool frontend for BIND9 BindGraph is a very simple DNS
