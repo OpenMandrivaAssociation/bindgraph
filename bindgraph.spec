@@ -49,7 +49,7 @@ install -d %{buildroot}%{_sysconfdir}/sysconfig
 install -d %{buildroot}%{_sysconfdir}/logrotate.d
 install -d %{buildroot}%{_sysconfdir}/httpd/conf/webapps.d
 install -d %{buildroot}%{_sbindir}
-install -d %{buildroot}%{_localstatedir}/bindgraph
+install -d %{buildroot}%{_localstatedir}/lib/bindgraph
 install -d %{buildroot}/var/run/bindgraph
 install -d %{buildroot}/var/log/bindgraph
 install -d %{buildroot}/var/cache/bindgraph
@@ -95,4 +95,4 @@ EOF
 %dir %attr(0755,root,root) /var/run/bindgraph
 %dir %attr(0755,root,root) /var/log/bindgraph
 %dir %attr(0755,apache,root) /var/cache/bindgraph
-%dir %attr(0755,root,root) %{_localstatedir}/bindgraph
+%dir %attr(0755,root,root) %{_localstatedir}/lib/bindgraph
