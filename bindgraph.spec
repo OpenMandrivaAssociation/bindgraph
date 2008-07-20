@@ -1,7 +1,7 @@
 Summary:	BindGraph gathers bind9 statistics
 Name:		bindgraph
 Version:	0.2
-Release:	%mkrel 6
+Release:	%mkrel 7
 License:	GPL
 Group:		Networking/WWW
 URL:		http://www.linux.it/~md/software/
@@ -20,7 +20,7 @@ Requires:	bind
 Requires:	rrdtool
 #Requires:	perl-File-Tail
 BuildArch:	noarch
-BuildRoot:	%{_tmppath}/%{name}-%{version}-root
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 DNS statistics RRDtool frontend for BIND9 BindGraph is a very simple DNS
