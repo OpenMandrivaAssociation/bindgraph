@@ -1,0 +1,5 @@
+sources:
+  "bindgraph_0.2a.orig.tar.gz:"	6d6440e1efbb3b60762d98e315fb5ec714ab53b4
+  "bindgraph.init:"	1bfd5fee8c4ea9e972f62c3d062e0d4ff1200ceb
+  "bindgraph.logrotate:"	65543048a64f9cbf6a9132e36df656c872355508
+  "bindgraph.sysconfig:"	c7d5033e6cec97024c070a031e1e35a0505b1314
