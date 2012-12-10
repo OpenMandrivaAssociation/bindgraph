@@ -95,3 +95,62 @@ rm -rf %{buildroot}
 %dir %attr(0755,root,root) /var/log/bindgraph
 %dir %attr(0755,apache,root) /var/cache/bindgraph
 %dir %attr(0755,root,root) %{_localstatedir}/lib/bindgraph
+
+
+%changelog
+* Sun Dec 05 2010 Oden Eriksson <oeriksson@mandriva.com> 0.2-10mdv2011.0
++ Revision: 610071
+- rebuild
+
+* Mon Mar 01 2010 Guillaume Rousse <guillomovitch@mandriva.org> 0.2-9mdv2010.1
++ Revision: 513189
+- rely on filetrigger for reloading apache configuration begining with 2010.1, rpm-helper macros otherwise
+- switch to "open to all" default access policy
+- no need to prevent initscript translation
+
+* Wed Sep 02 2009 Thierry Vignaud <tv@mandriva.org> 0.2-8mdv2010.0
++ Revision: 424621
+- rebuild
+
+* Sun Jul 20 2008 Oden Eriksson <oeriksson@mandriva.com> 0.2-7mdv2009.0
++ Revision: 238958
+- rebuild
+
+  + Pixel <pixel@mandriva.com>
+    - adapt to %%_localstatedir now being /var instead of /var/lib (#22312)
+
+  + Olivier Blin <oblin@mandriva.com>
+    - restore BuildRoot
+
+  + Thierry Vignaud <tv@mandriva.org>
+    - kill re-definition of %%buildroot on Pixel's request
+
+* Thu May 10 2007 Oden Eriksson <oeriksson@mandriva.com> 0.2-6mdv2008.0
++ Revision: 26127
+- use the source from debian that actually works (duh!)
+- added some apache config as well...
+
+* Thu May 10 2007 Oden Eriksson <oeriksson@mandriva.com> 0.2-5mdv2008.0
++ Revision: 25915
+- fix the path to the query.log
+- bunzip the sources
+
+
+* Fri Dec 22 2006 Oden Eriksson <oeriksson@mandriva.com> 0.2-4mdv2007.0
++ Revision: 101620
+- Import bindgraph
+
+* Sun Jan 08 2006 Oden Eriksson <oeriksson@mandriva.com> 0.2-4mdk
+- rebuild
+
+* Sun Dec 19 2004 Oden Eriksson <oeriksson@mandrakesoft.com> 0.2-3mdk
+- fix a silly typo
+
+* Sun Dec 19 2004 Oden Eriksson <oeriksson@mandrakesoft.com> 0.2-2mdk
+- ahh, i forgot the %%post, %%preun and logrotate stuff...
+
+* Sun Dec 19 2004 Oden Eriksson <oeriksson@mandrakesoft.com> 0.2-1mdk
+- initial debian import but with a twist
+- partly rediffed the debian patch (P0)
+- added S1 & S2
+

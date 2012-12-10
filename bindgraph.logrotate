@@ -1,0 +1,8 @@
+/var/log/bindgraph/bindgraph.log {
+	missingok
+	compress
+	notifempty
+	daily
+	rotate 5
+	create 0600 root root
+}

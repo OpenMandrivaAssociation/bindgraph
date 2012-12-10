@@ -1,0 +1,7 @@
+
+BINDGRAPH_DNS_LOG="/var/lib/named/var/log/query.log"
+BINDGRAPH_PID="/var/run/bindgraph/bindgraph.pid"
+BINDGRAPH_RRD_DIR="/var/lib/bindgraph"
+BINDGRAPH_RRD_NAME="bindgraph"
+BINDGRAPH_LOG="/var/log/bindgraph/bindgraph.log"
+

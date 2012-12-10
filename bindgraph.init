@@ -1,0 +1,65 @@
+#!/bin/bash
+#
+# bindgraph    Starts and stops the bindgraph daemon.
+#
+# chkconfig: 2345 99 01
+# description: bindgraph is a BIND graph collecting daemon.
+# processname: bindgraph
+# pidfile: /var/run/bindgraph/bindgraph.pid
+# config: /etc/sysconfig/bindgraph
+
+# Source function library.
+. /etc/rc.d/init.d/functions
+
+# Source networking configuration.
+. /etc/sysconfig/network
+
+# Check that networking is up.
+[ "${NETWORKING}" = "no" ] && exit 0
+
+[ -e /etc/sysconfig/bindgraph ] && . /etc/sysconfig/bindgraph
+
+[ -x /usr/sbin/bindgraph ] || exit 0
+
+# See how we were called.
+case "$1" in
+start)
+	echo -n "Starting bindgraph daemon: "
+	if [ -f /var/run/bindgraph/bindgraph.pid ]; then
+	    echo -n "removing mouldy old pid file"
+	    rm -f /var/run/bindgraph/bindgraph.pid
+	fi
+	daemon nice -20 /usr/sbin/bindgraph \
+	--daemon \
+	--logfile ${BINDGRAPH_DNS_LOG:-"/var/lib/named/var/log/query.log"} \
+	--daemon_pid=${BINDGRAPH_PID:-"/var/run/bindgraph/bindgraph.pid"} \
+	--daemon_rrd=${BINDGRAPH_RRD_DIR:-"/var/lib/bindgraph"} \
+	--rrd_name=${BINDGRAPH_RRD_NAME:-"bindgraph"} \
+	--daemon_log=${BINDGRAPH_LOG:-"/var/log/bindgraph/bindgraph.log"}
+	echo
+	touch /var/lock/subsys/bindgraph
+	;;
+stop)
+	echo -n "Shutting down bindgraph daemon: "
+	killproc bindgraph
+	echo
+	rm -f /var/lock/subsys/bindgraph
+	rm -f /var/run/bindgraph/bindgraph.pid
+	;;
+status)
+	status bindgraph
+	;;
+restart|reload)
+	$0 stop
+  	sleep 2
+	$0 start
+	;;
+condrestart)
+	[ -f /var/lock/subsys/bindgraph ] && $0 restart
+	;;
+  *)
+	echo "Usage: bindgraph {start|stop|status|restart|condrestart|reload}"
+	exit 1
+esac
+
+exit 0
