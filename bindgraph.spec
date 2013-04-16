@@ -1,7 +1,7 @@
 Summary:	BindGraph gathers bind9 statistics
 Name:		bindgraph
 Version:	0.2
-Release:	%mkrel 10
+Release:	11
 License:	GPL
 Group:		Networking/WWW
 URL:		http://www.linux.it/~md/software/
@@ -74,10 +74,6 @@ EOF
 %preun
 %_preun_service bindgraph
 
-%postun
-%if %mdkversion < 201010
-%_postun_webapp
-%endif
 
 %clean
 rm -rf %{buildroot}
