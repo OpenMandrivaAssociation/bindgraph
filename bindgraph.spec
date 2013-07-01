@@ -1,4 +1,4 @@
-Summary:	BindGraph gathers bind9 statistics
+Summary:	Gathers bind9 statistics
 Name:		bindgraph
 Version:	0.2
 Release:	12
