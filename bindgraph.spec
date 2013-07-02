@@ -1,7 +1,7 @@
 Summary:	Gathers bind9 statistics
 Name:		bindgraph
 Version:	0.2
-Release:	12
+Release:	13
 License:	GPL
 Group:		Networking/WWW
 URL:		http://www.linux.it/~md/software/
@@ -20,7 +20,6 @@ Requires:	bind
 Requires:	rrdtool
 #Requires:	perl-File-Tail
 BuildArch:	noarch
-BuildRoot:	%{_tmppath}/%{name}-%{version}
 
 %description
 DNS statistics RRDtool frontend for BIND9 BindGraph is a very simple DNS
@@ -39,7 +38,6 @@ cp %{SOURCE3} bindgraph.logrotate
 %build
 
 %install
-rm -rf %{buildroot}
 
 install -d %{buildroot}%{_initrddir}
 install -d %{buildroot}%{_sysconfdir}/sysconfig
@@ -76,10 +74,8 @@ EOF
 
 
 %clean
-rm -rf %{buildroot}
 
 %files 
-%defattr(-,root,root)
 %doc ChangeLog COPYING rbldnsd.diff README
 %attr(0755,root,root) %{_initrddir}/bindgraph
 %config(noreplace) %{_webappconfdir}/%{name}.conf
