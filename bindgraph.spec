@@ -58,8 +58,7 @@ install -m0644 bindgraph.logrotate %{buildroot}%{_sysconfdir}/logrotate.d/bindgr
 install -d %{buildroot}%{_webappconfdir}
 cat > %{buildroot}%{_webappconfdir}/%{name}.conf << EOF
 <Location /cgi-bin/bindgraph.cgi>
-    Order allow,deny
-    Deny from all
+    Require all granted
 </Location>
 EOF
 
