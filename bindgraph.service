@@ -1,0 +1,16 @@
+[Unit]
+Description=bindgraph is a BIND graph collecting daemon.
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/usr/sbin/bindgraph --daemon \
+	  --logfile /var/lib/named/var/log/query.log \
+	  --daemon_pid=/var/run/bindgraph/bindgraph.pid \
+	  --daemon_rrd=/var/lib/bindgraph \
+	  --rrd_name=bindgraph \
+	  --daemon_log=/var/log/bindgraph/bindgraph.log
+PIDFile=/var/run/bindgraph/bindgraph.pid
+
+[Install]
+WantedBy=multi-user.target 
