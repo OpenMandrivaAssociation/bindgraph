@@ -58,24 +58,13 @@ cat > %{buildroot}%{_webappconfdir}/%{name}.conf << EOF
 EOF
 
 %post
-if [ $1 -eq 1 ] ; then 
-    # Initial installation 
-    /bin/systemctl daemon-reload >/dev/null 2>&1 || :
-fi
+%systemd_post bindgraph.service
 
 %preun
-if [ $1 -eq 0 ] ; then
-    # Package removal, not upgrade
-    /bin/systemctl --no-reload disable bindgraph.service > /dev/null 2>&1 || :
-    /bin/systemctl stop bindgraph.service > /dev/null 2>&1 || :
-fi
+%systemd_preun bindgraph.service
 
 %postun
-/bin/systemctl daemon-reload >/dev/null 2>&1 || :
-if [ $1 -ge 1 ] ; then
-    # Package upgrade, not uninstall
-    /bin/systemctl try-restart bindgraph.service >/dev/null 2>&1 || :
-fi
+%systemd_postun_with_restart bindgraph.service
 
 %clean
 
