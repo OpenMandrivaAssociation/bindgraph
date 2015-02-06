@@ -1,7 +1,7 @@
 Summary:	Gathers bind9 statistics
 Name:		bindgraph
 Version:	0.2
-Release:	16
+Release:	17
 License:	GPL
 Group:		Networking/WWW
 URL:		http://www.linux.it/~md/software/
