@@ -1,14 +1,12 @@
---- bindgraph.pl	2006-05-11 01:31:02.000000000 +0200
-+++ bindgraph.pl.oden	2007-05-10 18:15:13.000000000 +0200
-@@ -8,9 +8,9 @@
+diff -up bindgraph-0.3/bindgraph.pl.1~ bindgraph-0.3/bindgraph.pl
+--- bindgraph-0.3/bindgraph.pl.1~	2024-01-01 23:10:55.242626793 +0100
++++ bindgraph-0.3/bindgraph.pl	2024-01-01 23:24:01.257407923 +0100
+@@ -8,7 +8,7 @@
  
  my $rrdstep = 60;
  
--my $daemon_logfile = '/var/log/bindgraph.log';
+-my $daemon_logfile = 'bindgraph.log';
 +my $daemon_logfile = '/var/log/bindgraph/bindgraph.log';
- my $daemon_rrd_dir = '/var/lib/bindgraph';
--my $daemon_pidfile = '/var/run/servergraph/bindgraph.pid';
-+my $daemon_pidfile = '/var/run/bindgraph/bindgraph.pid';
+ my $daemon_rrd_dir = '.';
+ my $daemon_pidfile;
  my $rrd = 'bindgraph.rrd';
- 
- my @query_t = qw(TKEY SOA PTR A AAAA CNAME MX NS ANY _other_);

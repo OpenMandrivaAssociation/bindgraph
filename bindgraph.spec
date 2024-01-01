@@ -1,11 +1,11 @@
 Summary:	Gathers bind9 statistics
 Name:		bindgraph
-Version:	0.2
-Release:	18
+Version:	0.3
+Release:	1
 License:	GPL
 Group:		Networking/WWW
-URL:		http://www.linux.it/~md/software/
-Source0:	http://ftp.debian.org/debian/pool/main/b/bindgraph/bindgraph_0.2a.orig.tar.gz
+URL:		https://www.linux.it/~md/software/
+Source0:	https://www.linux.it/~md/software/bindgraph-%{version}.tgz
 Source1:	bindgraph.service
 Source2:	bindgraph.sysconfig
 Source3:	bindgraph.logrotate
@@ -18,19 +18,13 @@ Requires:	rrdtool
 #Requires:	perl-File-Tail
 BuildArch:	noarch
 
-Requires(post): systemd-units
-Requires(preun): systemd-units
-Requires(postun): systemd-units
-
 %description
 DNS statistics RRDtool frontend for BIND9 BindGraph is a very simple DNS
 statistics RRDtool frontend for BIND9 that produces daily, weekly, monthly and
 yearly graphs of the DNS server's activity (queries, errors, etc.).
 
 %prep
-
-%setup -q
-%patch0 -p0
+%autosetup -p1
 
 %build
 
@@ -42,10 +36,10 @@ install -d %{buildroot}%{_localstatedir}/lib/bindgraph
 install -d %{buildroot}/var/run/bindgraph
 install -d %{buildroot}/var/log/bindgraph
 install -d %{buildroot}/var/cache/bindgraph
-install -d %{buildroot}/var/www/cgi-bin
+install -d %{buildroot}/srv/www/cgi-bin
 
 install -m0755 bindgraph.pl %{buildroot}%{_sbindir}/bindgraph
-install -m0755 bindgraph.cgi %{buildroot}/var/www/cgi-bin/
+install -m0755 bindgraph.cgi %{buildroot}/srv/www/cgi-bin/
 install -D -m0644 %{SOURCE1} %{buildroot}%{_unitdir}/bindgraph.service
 install -m0644 %{SOURCE2} %{buildroot}%{_sysconfdir}/sysconfig/bindgraph
 install -m0644 %{SOURCE3} %{buildroot}%{_sysconfdir}/logrotate.d/bindgraph
@@ -75,7 +69,7 @@ EOF
 %attr(0644,root,root) %config(noreplace) %{_sysconfdir}/sysconfig/bindgraph
 %attr(0644,root,root) %config(noreplace) %{_sysconfdir}/logrotate.d/bindgraph
 %attr(0755,root,root) %{_sbindir}/bindgraph
-%attr(0755,root,root) /var/www/cgi-bin/bindgraph.cgi
+%attr(0755,root,root) /srv/www/cgi-bin/bindgraph.cgi
 %dir %attr(0755,root,root) /var/run/bindgraph
 %dir %attr(0755,root,root) /var/log/bindgraph
 %dir %attr(0755,apache,root) /var/cache/bindgraph
