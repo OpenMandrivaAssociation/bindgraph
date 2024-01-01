@@ -72,5 +72,5 @@ EOF
 %attr(0755,root,root) /srv/www/cgi-bin/bindgraph.cgi
 %dir %attr(0755,root,root) /var/run/bindgraph
 %dir %attr(0755,root,root) /var/log/bindgraph
-%dir %attr(0755,apache,root) /var/cache/bindgraph
+%dir %attr(0755,www,root) /var/cache/bindgraph
 %dir %attr(0755,root,root) %{_localstatedir}/lib/bindgraph
